@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Iphone XR",
+    "price": "11000000"
+  },
+  {
+    "id": "2",
+    "name": "Suzuki viva",
+    "price": "22000000"
+  },
+  {
+    "id": "3",
+    "name": "Dragon balls",
+    "price": "15500"
+  },
+  {
+    "id": "4",
+    "name": "Rice",
+    "price": "25000"
+  }
+]

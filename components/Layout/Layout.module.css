@@ -1,0 +1,19 @@
+.defaultLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+.header {
+    flex-grow: 0;
+    margin-bottom: 25px;
+}
+.footer {
+    flex-grow: 0;
+    background-color: aliceblue;
+    height: 50px;
+}
+.main {
+    flex-grow: 1
+}
+
