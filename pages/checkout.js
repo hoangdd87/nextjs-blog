@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import Layout from '../components/Layout/Layout';
 import CartItemsContext from '../contexts/CartItemsContext';
 import styles from '../styles/cart.module.css';
-import Link from 'next/link';
 
-const Cart = () => {
+const Checkout = () => {
   const { productsSelected } = useContext(CartItemsContext);
-  const getCartContent = () => (
-    <>
-      <h2>You selected:</h2>
+  return (
+    <Layout title="Checkout">
+      <h1>Checkout</h1>
+      <p><strong>Your current selected products:</strong></p>
       <ul>
         { productsSelected.map( product => (
           <li key={ product.cartItemId } className={ styles.productRow} >
@@ -17,20 +17,13 @@ const Cart = () => {
           </li>
         ) ) }
       </ul>
-      <Link href={ `/checkout` }>
-        <a>Checkout</a>
-      </Link>
-    </>
-  )
-  return (
-    <Layout title="Cart">
-      <h1>Cart</h1>
-      { productsSelected.length === 0 ? (<h2>Cart is empty</h2>) : getCartContent() }
-      
+      <form>
+        checkout
+      </form>
     </Layout>
   );
 };
 
-Cart.propTypes = {};
+Checkout.propTypes = {};
 
-export default Cart;
+export default Checkout;
