@@ -16,7 +16,6 @@ const Header = ({ className }) => {
         <Link href={ "/products" }>
           <a className={ styles.link }>Products List</a>
         </Link>
-        <span style={ { flexGrow: 1 } }> </span>
         <Link href={ "/cart" }>
           <a className={ styles.link }>{ `Cart(${ productsSelected.length })` }</a>
         </Link>

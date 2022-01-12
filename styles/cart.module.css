@@ -1,0 +1,9 @@
+.productRow {
+    display: flex;
+}
+.name {
+
+}
+.price {
+    margin-left: 50px;
+}

@@ -1,6 +1,7 @@
 import Layout from '../../components/Layout/Layout'
 import { getAllProducts } from '../../lib/productsDataBaseHelpers';
-
+import { useContext } from 'react';
+import CartItemsContext from '../../contexts/CartItemsContext';
 
 export async function getStaticPaths() {
   try {
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params :{ id } }) {
+export async function getStaticProps({ params: { id } }) {
   try {
     const allProducts = await getAllProducts();
     const productFound = allProducts.find(product => product.id === id);
@@ -35,13 +36,14 @@ export async function getStaticProps({ params :{ id } }) {
 
 export default function Product({ product }) {
   console.log('Product = ', product);
+  const { addNewProductItem } = useContext(CartItemsContext);
   return (
-    <Layout>
+    <Layout title={ `${ product.name }` }>
       <h1>Product detail</h1>
       <p>ID: { product.id }</p>
       <p>Name: { product.name }</p>
       <p>Price: { product.price }</p>
-      <button style={ { display: 'block' }}>Add to cart</button>
+      <button onClick={ () => addNewProductItem(product) } style={ { display: 'block' } }>Add to cart</button>
     </Layout>
   )
 }
