@@ -1,29 +1,22 @@
 import Layout from '../components/Layout/Layout';
 import PropTypes from 'prop-types';
-import fs from 'fs';
-import path from 'path';
+import { getAllProducts } from '../lib/productsDataBaseHelpers';
+import styles from '../components/Layout/Header/Header.module.css';
+import Link from 'next/link';
+import React from 'react';
 
-const dataJsonFile = path.join(process.cwd(), 'database/products.json');
 
 export async function getStaticProps() {
-  return new Promise((resolve, reject) => {
-    fs.readFile(dataJsonFile, 'utf8', function (err, data) {
-      try {
-        let products = [];
-        if (err) {
-          reject(new Error('Fetching products failed'))
-        }
-        products = JSON.parse(data);
-        resolve({
-          props: {
-            products
-          }
-        });
-      } catch (err) {
-        reject(err)
+  try {
+    const products = await getAllProducts();
+    return {
+      props: {
+        products
       }
-    });
-  })
+    }
+  } catch (err) {
+    throw new Error('Fetching data failed');
+  }
 }
 
 export default function Products({ products }) {
@@ -34,7 +27,10 @@ export default function Products({ products }) {
       <ul>
         { products.map(propduct => (
           <li key={ propduct.id }>
-            ID: { propduct.id }. Name: { propduct.name } ---- Price: { propduct.price }
+            ID: { propduct.id }. Name: { propduct.name } ---- Price: { propduct.price } ---
+            <Link href={ `/products/${propduct.id}` }>
+              <a className={ styles.link }>View</a>
+            </Link>
           </li>
         ))}
       </ul>

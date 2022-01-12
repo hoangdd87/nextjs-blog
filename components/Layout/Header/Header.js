@@ -2,23 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Header.module.css';
 import Link from 'next/link';
+import CartItemsContext from '../../../contexts/CartItemsContext';
+import { useContext } from 'react';
 
 const Header = ({ className }) => {
+  const { productsSelected } = useContext(CartItemsContext);
   return (
-      <header className={ className }>
-        <nav className = { styles.nav  }>
-          <Link href={ "/" }>
-            <a className={ styles.link }>Home</a>
-          </Link>
-          <Link href={ "/products" }>
-            <a className={ styles.link }>Products List</a>
-          </Link>
-          <Link href={ "/cart" }>
-            <a className={ styles.link }>Cart</a>
-          </Link>
-          
-        </nav>
-      </header>
+    <header className={ className }>
+      <nav className={ styles.nav }>
+        <Link href={ "/" }>
+          <a className={ styles.link }>Home</a>
+        </Link>
+        <Link href={ "/products" }>
+          <a className={ styles.link }>Products List</a>
+        </Link>
+        <span style={ { flexGrow: 1 } }> </span>
+        <Link href={ "/cart" }>
+          <a className={ styles.link }>{ `Cart(${ productsSelected.length })` }</a>
+        </Link>
+      </nav>
+    </header>
   );
 };
 
