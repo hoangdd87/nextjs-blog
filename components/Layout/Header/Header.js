@@ -19,6 +19,9 @@ const Header = ({ className }) => {
         <Link href={ "/cart" }>
           <a className={ styles.link }>{ `Cart(${ currentCart.length })` }</a>
         </Link>
+        <Link href={ "/orders" }>
+          <a className={ styles.link }>Orders</a>
+        </Link>
       </nav>
     </header>
   );

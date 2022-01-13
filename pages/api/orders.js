@@ -16,6 +16,7 @@ export default async function handler(req, res) {
   }
   if(req.method === "GET") {
     console.log('Request = ', req);
-    res.status(200).json({ text: 'Hello' })
+    const allOrders = await getAllOrders();
+    res.status(200).json(allOrders)
   }
 }

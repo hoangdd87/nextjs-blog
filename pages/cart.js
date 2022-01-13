@@ -26,7 +26,6 @@ const Cart = () => {
     <Layout title="Cart">
       <h1>Cart</h1>
       { currentCart.length === 0 ? (<h2>Cart is empty</h2>) : getCartContent() }
-      
     </Layout>
   );
 };
