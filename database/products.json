@@ -1,21 +1,21 @@
 [
   {
-    "id": "1",
+    "productId": "1",
     "name": "Iphone XR",
     "price": "11000000"
   },
   {
-    "id": "2",
+    "productId": "2",
     "name": "Suzuki viva",
     "price": "22000000"
   },
   {
-    "id": "3",
+    "productId": "3",
     "name": "Dragon balls",
     "price": "15500"
   },
   {
-    "id": "4",
+    "productId": "4",
     "name": "Rice",
     "price": "25000"
   }

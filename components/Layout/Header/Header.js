@@ -6,7 +6,7 @@ import CartItemsContext from '../../../contexts/CartItemsContext';
 import { useContext } from 'react';
 
 const Header = ({ className }) => {
-  const { productsSelected } = useContext(CartItemsContext);
+  const { currentCart } = useContext(CartItemsContext);
   return (
     <header className={ className }>
       <nav className={ styles.nav }>
@@ -17,7 +17,7 @@ const Header = ({ className }) => {
           <a className={ styles.link }>Products List</a>
         </Link>
         <Link href={ "/cart" }>
-          <a className={ styles.link }>{ `Cart(${ productsSelected.length })` }</a>
+          <a className={ styles.link }>{ `Cart(${ currentCart.length })` }</a>
         </Link>
       </nav>
     </header>

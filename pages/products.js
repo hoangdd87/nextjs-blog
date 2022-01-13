@@ -20,15 +20,15 @@ export async function getStaticProps() {
 }
 
 export default function Products({ products }) {
-  console.log('Products = ', products);
+  console.log('Product = ', products);
   return (
-    <Layout title="Products page">
-      <h1>Products list</h1>
+    <Layout title="Product page">
+      <h1>Product list</h1>
       <ul>
         { products.map(propduct => (
-          <li key={ propduct.id }>
-            ID: { propduct.id }. Name: { propduct.name } ---- Price: { propduct.price } ---
-            <Link href={ `/products/${propduct.id}` }>
+          <li key={ propduct.productId }>
+            ID: { propduct.productId }. Name: { propduct.name } ---- Price: { propduct.price } ---
+            <Link href={ `/products/${propduct.productId}` }>
               <a className={ styles.link }>View</a>
             </Link>
           </li>
@@ -39,7 +39,11 @@ export default function Products({ products }) {
 }
 
 Products.propTypes = {
-  products: PropTypes.array.isRequired
+  products: PropTypes.arrayOf(PropTypes.shape({
+    productId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired
+  })).isRequired
 }
 
 
