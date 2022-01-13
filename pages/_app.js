@@ -9,8 +9,11 @@ export default function App({ Component, pageProps }) {
     const addNewProductItem = product => {
         setCurrentCart([...currentCart, { product, cartItemId: ++cartItemId.current }]);
     }
+    const resetCart = () => {
+        setCurrentCart([]);
+    }
     return (
-      <CartItemsContext.Provider value = { { currentCart, addNewProductItem } }>
+      <CartItemsContext.Provider value = { { currentCart, addNewProductItem, resetCart } }>
         <Component {...pageProps} />
       </CartItemsContext.Provider>
     )

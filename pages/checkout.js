@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router'
 
 const Checkout = () => {
-  const { currentCart } = useContext(CartItemsContext);
+  const { currentCart, resetCart } = useContext(CartItemsContext);
   const router = useRouter();
   const [values, setValues] = useState({
     name: 'Bill Gates',
@@ -26,8 +26,8 @@ const Checkout = () => {
         orderInfo: values
       }
     }).then(({ data }) => {
-      console.log('Data = ', data);
-      router.push(`/thankyou/${data.orderId}`)
+      router.push(`/thankyou/${data.orderId}`);
+      resetCart();
     })
   }
   
