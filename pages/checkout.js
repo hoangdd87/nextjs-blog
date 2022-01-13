@@ -3,9 +3,11 @@ import Layout from '../components/Layout/Layout';
 import CartItemsContext from '../contexts/CartItemsContext';
 import styles from '../styles/cart.module.css';
 import axios from 'axios';
+import { useRouter } from 'next/router'
 
 const Checkout = () => {
   const { currentCart } = useContext(CartItemsContext);
+  const router = useRouter();
   const [values, setValues] = useState({
     name: 'Bill Gates',
     email: 'billGates@gmail.com',
@@ -25,6 +27,7 @@ const Checkout = () => {
       }
     }).then(({ data }) => {
       console.log('Data = ', data);
+      router.push(`/thankyou/${data.orderId}`)
     })
   }
   
